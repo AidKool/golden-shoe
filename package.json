@@ -1,0 +1,29 @@
+{
+  "name": "golden-shoe",
+  "version": "1.0.0",
+  "description": "",
+  "proxy": "http://localhost:3001",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "kill": "npx kill-port 3000 && npx kill-port 3001",
+    "restart": "npx kill-port 3000 && npx kill-port 3001 && concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AidKool/golden-shoe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AidKool/golden-shoe/issues"
+  },
+  "homepage": "https://github.com/AidKool/golden-shoe#readme",
+  "devDependencies": {
+    "concurrently": "^7.2.2"
+  }
+}
