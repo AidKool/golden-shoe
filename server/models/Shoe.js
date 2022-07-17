@@ -7,10 +7,18 @@ const shoeSchema = new Schema({
     type: String,
     required: true,
   },
+
   colour: {
     type: String,
     required: true,
   },
+
+  image: {
+    type: String,
+    required: true,
+    default: 'https://via.placeholder.com/250.png',
+  },
+
   size: {
     type: String,
     enum: [
