@@ -8,6 +8,11 @@ const shoeSchema = new Schema({
     required: true,
   },
 
+  stock: {
+    type: Schema.Types.ObjectId,
+    ref: 'Stock',
+  },
+
   colour: {
     type: String,
     required: true,
@@ -17,35 +22,6 @@ const shoeSchema = new Schema({
     type: String,
     required: true,
     default: 'https://via.placeholder.com/250.png',
-  },
-
-  size: {
-    type: String,
-    enum: [
-      '3',
-      '3.5',
-      '4',
-      '4.5',
-      '5',
-      '5.5',
-      '6',
-      '6.5',
-      '7',
-      '7.5',
-      '8',
-      '8.5',
-      '9',
-      '9.5',
-      '10',
-      '10.5',
-      '11',
-      '11.5',
-      '12',
-      '12.5',
-      '13',
-    ],
-    default: '3',
-    required: true,
   },
 
   gender: {
