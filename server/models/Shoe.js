@@ -21,7 +21,6 @@ const shoeSchema = new Schema({
   image: {
     type: String,
     required: true,
-    default: 'https://via.placeholder.com/250.png',
   },
 
   gender: {
