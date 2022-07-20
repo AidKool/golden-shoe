@@ -10,7 +10,7 @@ db.once('open', async () => {
       await Shoe.create({
         model: 'shoe-' + faker.random.numeric(3),
         colour: faker.color.human(),
-        image: faker.helper.arrayElement([
+        image: faker.helpers.arrayElement([
           'https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310_960_720.png',
           'https://cdn.pixabay.com/photo/2016/12/10/16/57/shoes-1897708_960_720.jpg',
           'https://cdn.pixabay.com/photo/2013/09/01/18/12/womens-shoes-178162_960_720.jpg',
