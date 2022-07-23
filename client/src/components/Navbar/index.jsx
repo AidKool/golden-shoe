@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   AppBar,
+  Box,
   Button,
   Stack,
   Toolbar,
@@ -22,7 +23,14 @@ function Navbar() {
     <AppBar position="static" sx={{ bgcolor: 'dark.main' }}>
       <Container maxWidth="lg">
         <Toolbar>
-          <Typography sx={{ flexGrow: 1 }}>LOGO</Typography>
+          <Box sx={{ flexGrow: 1 }}>
+            <NavLink
+              to="/"
+              style={{ textDecoration: 'none', color: '#F5F5F5' }}
+            >
+              <Typography>LOGO</Typography>
+            </NavLink>
+          </Box>
           {isMobile ? (
             <DrawerComponent />
           ) : (
