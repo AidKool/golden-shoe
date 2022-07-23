@@ -7,22 +7,22 @@ const menuLinks = [
   {
     id: 2,
     text: 'featured',
-    path: '/featured',
+    path: '/products/featured',
   },
   {
     id: 3,
     text: 'deals',
-    path: '/deals',
+    path: '/products/deals',
   },
   {
     id: 4,
     text: 'women',
-    path: '/women',
+    path: '/products/women',
   },
   {
     id: 5,
     text: 'men',
-    path: '/men',
+    path: '/products/men',
   },
 ];
 
