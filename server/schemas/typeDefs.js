@@ -10,7 +10,6 @@ const typeDefs = gql`
     gender: String
     price: Int
     featured: Boolean
-    latest: Boolean
     deal: Boolean
   }
 
@@ -21,10 +20,10 @@ const typeDefs = gql`
   }
 
   type Query {
+    getAllShoes: [Shoe]
     getWomenShoes: [Shoe]
     getMenShoes: [Shoe]
     getFeatured: [Shoe]
-    getLatest: [Shoe]
     getDeals: [Shoe]
     getShoesById(_id: ID!): Shoe
   }

@@ -1,6 +1,14 @@
 const { Shoe, Stock } = require('../models');
 const resolvers = {
   Query: {
+    getAllShoes: async () => {
+      try {
+        const shoes = await Shoe.find().populate(['stock']);
+        return shoes;
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    },
     getWomenShoes: async () => {
       try {
         const shoes = await Shoe.find({
@@ -25,16 +33,6 @@ const resolvers = {
       try {
         const shoes = await Shoe.find({
           featured: true,
-        }).populate(['stock']);
-        return shoes;
-      } catch (error) {
-        throw new Error(error.message);
-      }
-    },
-    getLatest: async (_, __, ___) => {
-      try {
-        const shoes = await Shoe.find({
-          latest: true,
         }).populate(['stock']);
         return shoes;
       } catch (error) {

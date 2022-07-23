@@ -40,11 +40,6 @@ const shoeSchema = new Schema({
     default: false,
   },
 
-  latest: {
-    type: Boolean,
-    default: false,
-  },
-
   deal: {
     type: Boolean,
     default: false,
