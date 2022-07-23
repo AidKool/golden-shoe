@@ -5,7 +5,7 @@ const { Stock, Shoe } = require('../models');
 db.once('open', async () => {
   try {
     await Shoe.deleteMany({});
-    const shoesLength = 5;
+    const shoesLength = 20;
     for (let i = 0; i < shoesLength; i++) {
       await Shoe.create({
         model: 'shoe-' + faker.random.numeric(3),
