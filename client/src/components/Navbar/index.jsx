@@ -28,7 +28,7 @@ function Navbar() {
               to="/"
               style={{ textDecoration: 'none', color: '#F5F5F5' }}
             >
-              <Typography>LOGO</Typography>
+              <Typography sx={{ textDecoration: 'none' }}>LOGO</Typography>
             </NavLink>
           </Box>
           {isMobile ? (
