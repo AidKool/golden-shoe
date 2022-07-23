@@ -11,8 +11,8 @@ import {
 import { NavLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import links from '../../utils/links';
-import Close from '@mui/icons-material/Close';
+import userLinks from '../../utils/userLinks';
+import menuLinks from '../../utils/menuLinks';
 import { Box } from '@mui/system';
 
 function DrawerComponent() {
@@ -29,11 +29,38 @@ function DrawerComponent() {
           </IconButton>
         </Box>
         <List>
-          {links.map((link) => {
+          {userLinks.map((link) => {
+            const { id, path, icon, text } = link;
+            return (
+              <Box key={id}>
+                <ListItem>
+                  <NavLink
+                    reloadDocument
+                    to={path}
+                    style={{ textDecoration: 'none' }}
+                    onClick={() => setOpenDrawer(false)}
+                  >
+                    <Button startIcon={icon}>
+                      <Typography
+                        paddingRight={10}
+                        textTransform="capitalize"
+                        display="flex"
+                        alignItems="center"
+                      >
+                        {text}
+                      </Typography>
+                    </Button>
+                  </NavLink>
+                </ListItem>
+                <Divider />
+              </Box>
+            );
+          })}
+          {menuLinks.map((link) => {
             const { id, path, text } = link;
             return (
-              <>
-                <ListItem key={id} sx={{}}>
+              <Box key={id}>
+                <ListItem>
                   <NavLink
                     reloadDocument
                     to={path}
@@ -48,7 +75,7 @@ function DrawerComponent() {
                   </NavLink>
                 </ListItem>
                 <Divider />
-              </>
+              </Box>
             );
           })}
         </List>
