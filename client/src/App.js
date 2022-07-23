@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  ApolloClient,
+  createHttpLink,
+  InMemoryCache,
+  ApolloProvider,
+} from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Home, Products, About, Contact, Auth } from './pages';
@@ -13,20 +19,31 @@ const customTheme = createTheme({
   },
 });
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
+
 function App() {
   return (
-    <ThemeProvider theme={customTheme}>
-      <CssBaseline />
-      <Router>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="products" element={<Products />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="auth" element={<Auth />} />
-        </Routes>
-      </Router>
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={customTheme}>
+        <CssBaseline />
+        <Router>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/products/:type" element={<Products />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="auth" element={<Auth />} />
+          </Routes>
+        </Router>
+      </ThemeProvider>
+    </ApolloProvider>
   );
 }
 
