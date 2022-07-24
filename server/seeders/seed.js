@@ -5,10 +5,11 @@ const { Stock, Shoe } = require('../models');
 db.once('open', async () => {
   try {
     await Shoe.deleteMany({});
+    await Stock.deleteMany({});
     const shoesLength = 20;
     for (let i = 0; i < shoesLength; i++) {
       await Shoe.create({
-        model: 'shoe-' + faker.random.numeric(3),
+        model: 'shoe-' + faker.random.numeric(5),
         colour: faker.color.human(),
         image: faker.helpers.arrayElement([
           'https://res.cloudinary.com/dxe6c1nwr/image/upload/c_fill,h_411,q_auto:good,w_690/v1658667555/shoes-153310_960_720_jm3ycm.jpg',
@@ -122,7 +123,7 @@ db.once('open', async () => {
           '12.5',
           '13',
         ]),
-        stock: Number(faker.random.numeric(1)),
+        stock: Math.floor(Math.random() * 10),
       });
     }
 
