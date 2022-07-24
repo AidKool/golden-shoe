@@ -50,14 +50,12 @@ function Products() {
 
   useEffect(() => {
     const getShoesData = async () => {
-      console.log(type);
       switch (type) {
         case 'women':
           await getWomenShoes();
           if (womenShoesData) {
             setShoes(womenShoesData.getWomenShoes);
           }
-          console.log(shoes);
           setLoading(womenLoading);
           break;
         case 'men':
