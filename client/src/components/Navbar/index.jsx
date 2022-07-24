@@ -12,7 +12,7 @@ import { NavLink } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { Container } from '@mui/system';
 import userLinks from '../../utils/userLinks';
-import DrawerComponent from '../Drawer';
+import { DrawerComponent } from '../../components';
 import { customTheme } from '../../utils/theme';
 import menuLinks from '../../utils/menuLinks';
 

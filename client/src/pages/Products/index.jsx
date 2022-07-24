@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/client';
-import { Box, Grid } from '@mui/material';
-import { Container } from '@mui/system';
-import { Navbar } from '../../components';
+import { Box, Grid, Container } from '@mui/material';
+import {
+  Navbar,
+  ProductCard,
+  ShoesLinksNav,
+  SingleProduct,
+} from '../../components';
 import {
   GET_ALL_SHOES,
   GET_DEALS,
@@ -11,9 +15,6 @@ import {
   GET_MEN_SHOES,
   GET_WOMEN_SHOES,
 } from '../../utils/queries';
-import ProductCard from '../../components/ProductCard';
-import ShoesLinksNav from '../../components/ShoesLinksNav';
-import SingleProduct from '../../components/SingleProduct';
 
 function Products() {
   const [shoes, setShoes] = useState([]);

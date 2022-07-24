@@ -11,9 +11,9 @@ import {
 import { NavLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import { Box } from '@mui/system';
 import userLinks from '../../utils/userLinks';
 import menuLinks from '../../utils/menuLinks';
-import { Box } from '@mui/system';
 
 function DrawerComponent() {
   const [openDrawer, setOpenDrawer] = useState(false);

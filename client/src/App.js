@@ -7,8 +7,8 @@ import {
 } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Home, Products, About, Contact, Auth } from './pages';
 import { createTheme, ThemeProvider } from '@mui/material';
+import { Home, Products } from './pages';
 
 const customTheme = createTheme({
   palette: {
@@ -37,9 +37,6 @@ function App() {
           <Routes>
             <Route index element={<Home />} />
             <Route path="/products/:type" element={<Products />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="auth" element={<Auth />} />
           </Routes>
         </Router>
       </ThemeProvider>
