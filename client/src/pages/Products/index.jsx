@@ -12,11 +12,15 @@ import {
   GET_WOMEN_SHOES,
 } from '../../utils/queries';
 import ProductCard from '../../components/ProductCard';
+import ShoesLinksNav from '../../components/ShoesLinksNav';
 
 function Products() {
   const [shoes, setShoes] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const params = useParams();
+  const type = params.type;
+
   const [getAllShoes, { loading: allLoading, data: allShoesData }] =
     useLazyQuery(GET_ALL_SHOES);
   const [getWomenShoes, { loading: womenLoading, data: womenShoesData }] =
@@ -27,8 +31,6 @@ function Products() {
     useLazyQuery(GET_FEATURED);
   const [getDeals, { loading: dealsLoading, data: dealsData }] =
     useLazyQuery(GET_DEALS);
-
-  const type = params.type;
 
   useEffect(() => {
     const getShoesData = async () => {
@@ -96,6 +98,7 @@ function Products() {
     <Box>
       <Navbar />
       <Container maxWidth="lg">
+        <ShoesLinksNav />
         <Grid container display="flex" justifyContent="center" gap={2}>
           {!loading &&
             shoes.map((item) => {

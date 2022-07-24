@@ -1,8 +1,8 @@
-const menuLinks = [
+const shoesLinks = [
   {
     id: 1,
-    text: 'home',
-    path: '/',
+    text: 'all products',
+    path: '/products/all',
   },
   {
     id: 2,
@@ -26,4 +26,4 @@ const menuLinks = [
   },
 ];
 
-export default menuLinks;
+export default shoesLinks;

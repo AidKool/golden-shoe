@@ -9,7 +9,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 function ProductCard({ model, image, price }) {
   return (
-    <Card sx={{ width: 345 }}>
+    <Card sx={{ width: 350 }}>
       <CardMedia component="img" height="280" image={image} alt={model} />
       <Grid container display="flex">
         <Grid item xs={6} display="flex" alignItems="center">
@@ -34,7 +34,7 @@ function ProductCard({ model, image, price }) {
               paragraph
               margin={0}
             >
-              {price}£
+              £{price}
             </Typography>
           </CardContent>
         </Grid>
