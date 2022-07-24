@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/client';
-import { Box, Grid, Container } from '@mui/material';
+import {
+  Box,
+  Grid,
+  Container,
+  IconButton,
+  Icon,
+  Button,
+  Typography,
+} from '@mui/material';
+import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import {
   Navbar,
   ProductCard,
@@ -104,7 +113,7 @@ function Products() {
   return (
     <Box>
       <Navbar />
-      <Container maxWidth="lg" sx={{ marginTop: 8 }}>
+      <Container maxWidth="lg" sx={{ marginTop: 8 }} position="relative">
         <ShoesLinksNav type={type} />
         <Grid container display="flex" justifyContent="center" gap={2}>
           {!loading &&
@@ -121,6 +130,21 @@ function Products() {
             })}
         </Grid>
         <SingleProduct open={open} handleClose={handleClose} id={id} />
+        <Button
+          variant="contained"
+          color="success"
+          sx={{
+            position: 'fixed',
+            right: 0,
+            bottom: '0',
+            marginRight: 5,
+            marginBottom: 5,
+            borderRadius: '100px',
+          }}
+          endIcon={<ChatBubbleOutlineOutlinedIcon />}
+        >
+          <Typography textTransform="capitalize">chat</Typography>
+        </Button>
       </Container>
     </Box>
   );
