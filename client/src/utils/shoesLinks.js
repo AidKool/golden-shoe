@@ -1,7 +1,7 @@
 const shoesLinks = [
   {
     id: 1,
-    text: 'all products',
+    text: 'all',
     path: '/products/all',
   },
   {

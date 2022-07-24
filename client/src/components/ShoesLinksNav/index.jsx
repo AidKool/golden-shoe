@@ -3,7 +3,7 @@ import { Stack, Typography } from '@mui/material';
 import shoesLinks from '../../utils/shoesLinks';
 import { NavLink } from 'react-router-dom';
 
-function ShoesLinksNav() {
+function ShoesLinksNav({ type }) {
   return (
     <Stack
       direction="row"
@@ -24,7 +24,8 @@ function ShoesLinksNav() {
           >
             <Typography
               sx={{
-                color: '#6d6d6d',
+                color: type === text ? 'dark.main' : '#6d6d6d',
+                textDecoration: type === text ? 'underline' : 'none',
                 '&:hover': {
                   color: 'dark.main',
                   textDecoration: 'underline',

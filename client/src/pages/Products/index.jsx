@@ -98,7 +98,7 @@ function Products() {
     <Box>
       <Navbar />
       <Container maxWidth="lg">
-        <ShoesLinksNav />
+        <ShoesLinksNav type={type} />
         <Grid container display="flex" justifyContent="center" gap={2}>
           {!loading &&
             shoes.map((item) => {
