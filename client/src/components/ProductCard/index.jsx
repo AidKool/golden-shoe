@@ -3,52 +3,64 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActions, Grid, IconButton } from '@mui/material';
+import { CardActions, Grid, IconButton } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-function ProductCard({ model, image, price, stock }) {
+function ProductCard({ model, image, price }) {
   return (
     <Card sx={{ width: 345 }}>
       <CardMedia component="img" height="280" image={image} alt={model} />
-      <Grid container display="flex" alignItems="center">
+      <Grid container display="flex">
         <Grid item xs={6} display="flex" alignItems="center">
           <CardContent
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              rowGap: 3,
+              rowGap: 1,
             }}
           >
-            <Typography variant="h6" paragraph margin={0}>
+            <Typography
+              variant="title"
+              sx={{ color: '#6d6d6d' }}
+              paragraph
+              margin={0}
+            >
               {model}
             </Typography>
-            <Typography variant="h6" paragraph margin={0}>
+            <Typography
+              variant="subtitle"
+              sx={{ color: '#4f4f4f' }}
+              paragraph
+              margin={0}
+            >
               {price}£
             </Typography>
           </CardContent>
         </Grid>
-        <Grid item xs={6} display="flex">
+        <Grid
+          item
+          xs={6}
+          display="flex"
+          justifyContent="flex-end"
+          alignItems="flex-start"
+          marginTop={1}
+        >
           <CardActions
             sx={{
               display: 'flex',
-              flexDirection: 'column',
+              flexDirection: 'row',
               alignItems: 'flex-end',
               paddingY: 0,
               rowGap: 2,
             }}
           >
-            <IconButton sx={{ marginTop: '-1rem' }}>
+            <IconButton>
+              <FavoriteBorderIcon />
+            </IconButton>
+            <IconButton>
               <ShareIcon />
             </IconButton>
-            <Button
-              variant="contained"
-              disableElevation
-              endIcon={<AddShoppingCartIcon />}
-              sx={{ bgcolor: 'warning.light' }}
-            >
-              <Typography textTransform="capitalize">add to cart</Typography>
-            </Button>
           </CardActions>
         </Grid>
       </Grid>
