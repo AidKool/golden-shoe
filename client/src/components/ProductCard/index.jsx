@@ -7,10 +7,24 @@ import { CardActions, Grid, IconButton } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-function ProductCard({ model, image, price }) {
+function ProductCard({ _id, model, image, price, setId, handleOpen }) {
   return (
     <Card sx={{ maxWidth: 360 }}>
-      <CardMedia component="img" height="280" image={image} alt={model} />
+      <CardMedia
+        component="img"
+        height="280"
+        image={image}
+        alt={model}
+        onClick={() => {
+          setId(_id);
+          handleOpen();
+        }}
+        sx={{
+          '&:hover': {
+            cursor: 'pointer',
+          },
+        }}
+      />
       <Grid container display="flex">
         <Grid item xs={6} display="flex" alignItems="center">
           <CardContent
@@ -22,7 +36,13 @@ function ProductCard({ model, image, price }) {
           >
             <Typography
               variant="title"
-              sx={{ color: '#6d6d6d' }}
+              sx={{
+                color: '#6d6d6d',
+                '&:hover': {
+                  cursor: 'pointer',
+                  textDecoration: 'underline',
+                },
+              }}
               paragraph
               margin={0}
             >

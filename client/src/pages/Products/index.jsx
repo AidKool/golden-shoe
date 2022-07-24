@@ -13,13 +13,19 @@ import {
 } from '../../utils/queries';
 import ProductCard from '../../components/ProductCard';
 import ShoesLinksNav from '../../components/ShoesLinksNav';
+import SingleProduct from '../../components/SingleProduct';
 
 function Products() {
   const [shoes, setShoes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [id, setId] = useState('');
 
   const params = useParams();
   const type = params.type;
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const [getAllShoes, { loading: allLoading, data: allShoesData }] =
     useLazyQuery(GET_ALL_SHOES);
@@ -104,11 +110,16 @@ function Products() {
             shoes.map((item) => {
               return (
                 <Grid item key={item.model}>
-                  <ProductCard {...item} />
+                  <ProductCard
+                    {...item}
+                    setId={setId}
+                    handleOpen={handleOpen}
+                  />
                 </Grid>
               );
             })}
         </Grid>
+        <SingleProduct open={open} handleClose={handleClose} id={id} />
       </Container>
     </Box>
   );
