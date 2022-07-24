@@ -7,7 +7,7 @@ const userLinks = [
     id: 1,
     icon: <PersonOutlineIcon />,
     text: 'account',
-    path: '/auth',
+    path: '/',
   },
   {
     id: 2,

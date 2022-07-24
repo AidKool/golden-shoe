@@ -53,7 +53,7 @@ function Home() {
           >
             Autumn Collection 2022
           </Typography>
-          <NavLink to="/featured" style={{ textDecoration: 'none' }}>
+          <NavLink to="/products/featured" style={{ textDecoration: 'none' }}>
             <Button
               type="submit"
               variant="contained"

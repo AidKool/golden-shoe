@@ -12,9 +12,9 @@ import { NavLink } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { Container } from '@mui/system';
 import userLinks from '../../utils/userLinks';
-import menuLinks from '../../utils/menuLinks';
 import DrawerComponent from '../Drawer';
 import { customTheme } from '../../utils/theme';
+import menuLinks from '../../utils/menuLinks';
 
 function Navbar() {
   const theme = useTheme(customTheme);
