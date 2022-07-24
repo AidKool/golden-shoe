@@ -103,8 +103,8 @@ function Products() {
           {!loading &&
             shoes.map((item) => {
               return (
-                <Grid key={item.model}>
-                  <ProductCard {...item}></ProductCard>
+                <Grid item key={item.model}>
+                  <ProductCard {...item} />
                 </Grid>
               );
             })}
