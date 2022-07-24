@@ -113,7 +113,7 @@ function Products() {
   return (
     <Box>
       <Navbar />
-      <Container maxWidth="lg" sx={{ marginTop: 8 }} position="relative">
+      <Container maxWidth="lg" sx={{ marginY: 8 }} position="relative">
         <ShoesLinksNav type={type} />
         <Grid container display="flex" justifyContent="center" gap={2}>
           {!loading &&
