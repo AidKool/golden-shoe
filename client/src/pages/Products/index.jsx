@@ -103,7 +103,7 @@ function Products() {
   return (
     <Box>
       <Navbar />
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ marginTop: 8 }}>
         <ShoesLinksNav type={type} />
         <Grid container display="flex" justifyContent="center" gap={2}>
           {!loading &&

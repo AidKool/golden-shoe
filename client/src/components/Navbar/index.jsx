@@ -20,7 +20,7 @@ function Navbar() {
   const theme = useTheme(customTheme);
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   return (
-    <AppBar position="static" sx={{ bgcolor: 'dark.main' }}>
+    <AppBar position="fixed" sx={{ bgcolor: 'dark.main' }}>
       <Container maxWidth="lg">
         <Toolbar>
           <Box sx={{ flexGrow: 1 }}>

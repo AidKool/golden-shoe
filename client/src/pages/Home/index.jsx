@@ -15,14 +15,14 @@ function Home() {
           backgroundPosition: 'center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
-          minHeight: 'calc(100vh - 64px)',
+          minHeight: '100vh',
         }}
       >
         <Box
           sx={{
             position: 'absolute',
             bottom: 0,
-            height: 'calc(100% - 64px)',
+            height: '100vh',
             left: 0,
             right: 0,
             backgroundColor: 'rgb(200, 200, 200, 0.55)',
