@@ -9,6 +9,7 @@ This is a task developed by Jordi for the third round of interviews for an Assoc
 - [Features](#features)
 - [Installation](#installation)
 - [Technologies](#technologies)
+- [Live site](#live)
 
 ## Features
 
@@ -51,3 +52,7 @@ npm run dev
 - GraphQL / Apollo
 - Express.js
 - Node.js
+
+## Live
+
+The application can be used live here - https://task-golden-shoes.herokuapp.com/
