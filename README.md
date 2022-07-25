@@ -52,6 +52,7 @@ npm run dev
 - GraphQL / Apollo
 - Express.js
 - Node.js
+- Material UI
 
 ## Live
 
