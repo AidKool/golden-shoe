@@ -31,7 +31,7 @@ For developers, you can install this project following the below steps:
 npm i
 ```
 
-- The project uses a Mongo DB hosted by Atlas and thus it is not necessary to seed the database. However, it can be done by running the script below from the root directory of the project
+- The project uses a Mongo DB hosted by Atlas which can be used live and thus it is not necessary to seed the database. However, developers can use their own Mongo DB database and seed it by running the script below from the root directory of the project
 
 ```
 npm run seed
