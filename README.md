@@ -51,4 +51,3 @@ npm run dev
 - GraphQL / Apollo
 - Express.js
 - Node.js
-- React.js
