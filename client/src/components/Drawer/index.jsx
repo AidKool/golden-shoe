@@ -4,13 +4,16 @@ import {
   Divider,
   Drawer,
   IconButton,
+  InputAdornment,
   List,
   ListItem,
+  TextField,
   Typography,
 } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import SearchIcon from '@mui/icons-material/Search';
 import { Box } from '@mui/system';
 import userLinks from '../../utils/userLinks';
 import menuLinks from '../../utils/menuLinks';
@@ -27,6 +30,21 @@ function DrawerComponent() {
           >
             <CloseIcon />
           </IconButton>
+        </Box>
+        <Box component="form" sx={{ paddingX: 1 }}>
+          <TextField
+            size="small"
+            sx={{
+              bgcolor: '#fff',
+            }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  {<SearchIcon />}
+                </InputAdornment>
+              ),
+            }}
+          ></TextField>
         </Box>
         <List>
           {userLinks.map((link) => {

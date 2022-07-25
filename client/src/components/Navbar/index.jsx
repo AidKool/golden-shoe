@@ -3,14 +3,17 @@ import {
   AppBar,
   Box,
   Button,
+  InputAdornment,
   Stack,
+  TextField,
   Toolbar,
   Typography,
   useMediaQuery,
+  Container,
 } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
-import { Container } from '@mui/system';
+import SearchIcon from '@mui/icons-material/Search';
 import userLinks from '../../utils/userLinks';
 import { DrawerComponent } from '../../components';
 import { customTheme } from '../../utils/theme';
@@ -55,6 +58,21 @@ function Navbar() {
                 })}
               </Stack>
               <Stack direction="row" spacing={1}>
+                <Box component="form">
+                  <TextField
+                    size="small"
+                    sx={{
+                      bgcolor: '#fff',
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          {<SearchIcon />}
+                        </InputAdornment>
+                      ),
+                    }}
+                  ></TextField>
+                </Box>
                 {userLinks.map((link) => {
                   const { id, path, icon } = link;
                   return (
