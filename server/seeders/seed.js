@@ -1,11 +1,10 @@
 const { faker } = require('@faker-js/faker');
 const db = require('../config/connection');
-const { Stock, Shoe } = require('../models');
+const { Shoe } = require('../models');
 
 db.once('open', async () => {
   try {
     await Shoe.deleteMany({});
-    await Stock.deleteMany({});
     const shoesLength = 20;
     for (let i = 0; i < shoesLength; i++) {
       await Shoe.create({
