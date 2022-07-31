@@ -47,8 +47,10 @@ const shoeSchema = new Schema({
     type: [stockSchema],
   },
 
-  colour: {
+  description: {
     type: String,
+    minLength: 25,
+    maxLength: 100,
     required: true,
   },
 

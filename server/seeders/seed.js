@@ -9,7 +9,8 @@ db.once('open', async () => {
     for (let i = 0; i < shoesLength; i++) {
       await Shoe.create({
         model: 'shoe-' + faker.random.numeric(5),
-        colour: faker.color.human(),
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porta nulla mauris.',
         image: faker.helpers.arrayElement([
           'https://res.cloudinary.com/dxe6c1nwr/image/upload/c_fill,h_411,q_auto:good,w_690/v1658667555/shoes-153310_960_720_jm3ycm.jpg',
           'https://res.cloudinary.com/dxe6c1nwr/image/upload/c_fill,h_411,q_auto:good,w_690/v1658667066/rainbow-colors-2405766_960_720_fguqvz.jpg',

@@ -4,7 +4,7 @@ const typeDefs = gql`
   type Shoe {
     _id: ID
     model: String
-    colour: String
+    description: String
     image: String
     stock: [Stock]
     gender: String

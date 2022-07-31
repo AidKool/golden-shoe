@@ -5,16 +5,8 @@ export const GET_ALL_SHOES = gql`
     getAllShoes {
       _id
       model
-      colour
       image
-      stock {
-        size
-        stock
-      }
-      gender
       price
-      featured
-      deal
     }
   }
 `;
@@ -24,16 +16,8 @@ export const GET_WOMEN_SHOES = gql`
     getWomenShoes {
       _id
       model
-      colour
       image
-      stock {
-        size
-        stock
-      }
-      gender
       price
-      featured
-      deal
     }
   }
 `;
@@ -43,16 +27,8 @@ export const GET_MEN_SHOES = gql`
     getMenShoes {
       _id
       model
-      colour
       image
-      stock {
-        size
-        stock
-      }
-      gender
       price
-      featured
-      deal
     }
   }
 `;
@@ -62,16 +38,8 @@ export const GET_FEATURED = gql`
     getFeatured {
       _id
       model
-      colour
       image
-      stock {
-        size
-        stock
-      }
-      gender
       price
-      featured
-      deal
     }
   }
 `;
@@ -81,16 +49,8 @@ export const GET_DEALS = gql`
     getDeals {
       _id
       model
-      colour
       image
-      stock {
-        size
-        stock
-      }
-      gender
       price
-      featured
-      deal
     }
   }
 `;
@@ -100,7 +60,7 @@ export const GET_SHOES_BY_ID = gql`
     getShoesById(_id: $id) {
       _id
       model
-      colour
+      description
       image
       stock {
         size

@@ -104,6 +104,14 @@ function SingleProduct({ open, handleClose, id }) {
               {shoes.gender === 'F' ? 'women' : 'men'}
             </Typography>
             <Typography
+              sx={{ color: '#4f4f4f' }}
+              paragraph
+              margin={0}
+              lineHeight={1}
+            >
+              {shoes.description}
+            </Typography>
+            <Typography
               variant="h6"
               sx={{ color: '#4f4f4f' }}
               paragraph
@@ -144,52 +152,19 @@ function SingleProduct({ open, handleClose, id }) {
                         key={size}
                         value={size}
                         className="test"
+                        disabled={stock === 0 ? true : false}
                         sx={{
                           display: 'flex',
                           justifyContent: 'space-between',
                         }}
                       >
-                        <Typography variant="body2">{size}</Typography>
-                        <Typography variant="body2">
+                        <Typography>{size}</Typography>
+                        <Typography>
                           {stock > 0 ? `(${stock} left)` : '(Out of stock)'}
                         </Typography>
                       </MenuItem>
                     );
                   })}
-                {/* <MenuItem
-                  width="100%"
-                  value={!loading && shoes.stock ? shoes.stock.size : ''}
-                  disabled={
-                    shoes.stock && shoes.stock.stock === 0 ? true : false
-                  }
-                >
-                  {!loading && shoes.stock
-                    ? shoes.stock.size + `(${shoes.stock.stock} left)`
-                    : 'size'}
-                </MenuItem> */}
-                ;
-              </Select>
-            </FormControl>
-            <FormControl size="small">
-              <InputLabel id="status-select-label">Colour</InputLabel>
-              <Select
-                name="colour"
-                label="colour"
-                value={formState.colour}
-                onChange={(event) => {
-                  setFormState({
-                    ...formState,
-                    colour: event.target.value,
-                  });
-                }}
-              >
-                <MenuItem width="100%" value="colour" disabled>
-                  Colour
-                </MenuItem>
-                <MenuItem width="100%" value={!loading ? shoes.colour : ''}>
-                  {!loading ? shoes.colour : 'colour'}
-                </MenuItem>
-                ;
               </Select>
             </FormControl>
             <Button
