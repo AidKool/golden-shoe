@@ -19,6 +19,15 @@ const typeDefs = gql`
     stock: Int
   }
 
+  type Purchase {
+    item: String
+    size: String
+  }
+
+  type Cart {
+    items: [Shoe]
+  }
+
   type Query {
     getAllShoes: [Shoe]
     getWomenShoes: [Shoe]
@@ -26,6 +35,12 @@ const typeDefs = gql`
     getFeatured: [Shoe]
     getDeals: [Shoe]
     getShoesById(_id: ID!): Shoe
+    getNumberPurchases: Int
+    getAllPurchases: [Purchase]
+  }
+
+  type Mutation {
+    addToCart(_id: ID!, size: String!): Boolean
   }
 `;
 

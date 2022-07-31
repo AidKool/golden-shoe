@@ -1,4 +1,5 @@
-const { Shoe, Stock } = require('../models');
+const { Shoe, Purchase } = require('../models');
+
 const resolvers = {
   Query: {
     getAllShoes: async () => {
@@ -56,6 +57,30 @@ const resolvers = {
           model: 'Stock',
         });
         return shoe;
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    },
+    getAllPurchases: async () => {
+      try {
+        return await Purchase.find();
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    },
+    getNumberPurchases: async () => {
+      try {
+        return Purchase.count();
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    },
+  },
+  Mutation: {
+    addToCart: async (_, { _id, size }) => {
+      try {
+        const purchase = await Purchase.create({ item: _id, size });
+        return purchase ? true : false;
       } catch (error) {
         throw new Error(error.message);
       }

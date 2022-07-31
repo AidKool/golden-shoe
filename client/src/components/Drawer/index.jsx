@@ -18,7 +18,7 @@ import { Box } from '@mui/system';
 import userLinks from '../../utils/userLinks';
 import menuLinks from '../../utils/menuLinks';
 
-function DrawerComponent() {
+function DrawerComponent({ purchases }) {
   const [openDrawer, setOpenDrawer] = useState(false);
   return (
     <>
@@ -60,13 +60,16 @@ function DrawerComponent() {
                   >
                     <Button startIcon={icon}>
                       <Typography
-                        paddingRight={10}
+                        paddingRight={1}
                         textTransform="capitalize"
                         display="flex"
                         alignItems="center"
                       >
                         {text}
                       </Typography>
+                      {text === 'cart' && (
+                        <Typography>({purchases})</Typography>
+                      )}
                     </Button>
                   </NavLink>
                 </ListItem>

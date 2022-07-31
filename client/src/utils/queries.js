@@ -73,3 +73,18 @@ export const GET_SHOES_BY_ID = gql`
     }
   }
 `;
+
+export const GET_NUMBER_PURCHASES = gql`
+  query GetNumberPurchases {
+    getNumberPurchases
+  }
+`;
+
+export const GET_ALL_PURCHASES = gql`
+  query GetAllPurchases {
+    getAllPurchases {
+      item
+      size
+    }
+  }
+`;
