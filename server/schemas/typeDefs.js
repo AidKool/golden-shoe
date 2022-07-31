@@ -24,8 +24,9 @@ const typeDefs = gql`
     size: String
   }
 
-  type Cart {
-    items: [Shoe]
+  type PurchaseResponse {
+    item: Shoe
+    size: String
   }
 
   type Query {
@@ -36,7 +37,7 @@ const typeDefs = gql`
     getDeals: [Shoe]
     getShoesById(_id: ID!): Shoe
     getNumberPurchases: Int
-    getAllPurchases: [Purchase]
+    getAllPurchases: [PurchaseResponse]
   }
 
   type Mutation {

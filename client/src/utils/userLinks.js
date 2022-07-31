@@ -13,7 +13,7 @@ const userLinks = [
     id: 2,
     icon: <ShoppingCartIcon />,
     text: 'cart',
-    path: '/',
+    path: '/cart',
   },
 ];
 

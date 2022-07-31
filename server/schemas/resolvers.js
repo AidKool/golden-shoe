@@ -63,7 +63,15 @@ const resolvers = {
     },
     getAllPurchases: async () => {
       try {
-        return await Purchase.find();
+        const purchases = await Purchase.find();
+        const purchaseResponse = [];
+
+        for await (const purchase of purchases) {
+          const { item, size } = purchase;
+          const shoes = await Shoe.findById(item);
+          purchaseResponse.push({ item: shoes, size });
+        }
+        return purchaseResponse;
       } catch (error) {
         throw new Error(error.message);
       }

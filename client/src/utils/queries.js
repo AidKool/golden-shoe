@@ -83,7 +83,14 @@ export const GET_NUMBER_PURCHASES = gql`
 export const GET_ALL_PURCHASES = gql`
   query GetAllPurchases {
     getAllPurchases {
-      item
+      item {
+        _id
+        model
+        description
+        image
+        gender
+        price
+      }
       size
     }
   }
