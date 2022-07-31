@@ -118,6 +118,13 @@ function SingleProduct({ open, handleClose, id }) {
                 name="size"
                 label="size"
                 value={formState.size}
+                className="my-select"
+                sx={{
+                  '& > div': {
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                  },
+                }}
                 onChange={(event) => {
                   setFormState({
                     ...formState,
@@ -128,7 +135,28 @@ function SingleProduct({ open, handleClose, id }) {
                 <MenuItem width="100%" value="size" disabled>
                   Size
                 </MenuItem>
-                <MenuItem
+                {!loading &&
+                  shoes.stock &&
+                  shoes.stock.map((item) => {
+                    const { size, stock } = item;
+                    return (
+                      <MenuItem
+                        key={size}
+                        value={size}
+                        className="test"
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                        }}
+                      >
+                        <Typography variant="body2">{size}</Typography>
+                        <Typography variant="body2">
+                          {stock > 0 ? `(${stock} left)` : '(Out of stock)'}
+                        </Typography>
+                      </MenuItem>
+                    );
+                  })}
+                {/* <MenuItem
                   width="100%"
                   value={!loading && shoes.stock ? shoes.stock.size : ''}
                   disabled={
@@ -138,7 +166,7 @@ function SingleProduct({ open, handleClose, id }) {
                   {!loading && shoes.stock
                     ? shoes.stock.size + `(${shoes.stock.stock} left)`
                     : 'size'}
-                </MenuItem>
+                </MenuItem> */}
                 ;
               </Select>
             </FormControl>
