@@ -95,45 +95,25 @@ db.once('open', async () => {
           false,
           false,
         ]),
+        stock: [
+          {
+            size: '6.5',
+            stock: Math.floor(Math.random() * 10),
+          },
+          {
+            size: '7.5',
+            stock: Math.floor(Math.random() * 10),
+          },
+          {
+            size: '8.5',
+            stock: Math.floor(Math.random() * 10),
+          },
+          {
+            size: '9.5',
+            stock: Math.floor(Math.random() * 10),
+          },
+        ],
       });
-    }
-
-    for (let i = 0; i < shoesLength; i++) {
-      await Stock.create({
-        size: faker.helpers.arrayElement([
-          '3',
-          '3.5',
-          '4',
-          '4.5',
-          '5',
-          '5.5',
-          '6',
-          '6.5',
-          '7',
-          '7.5',
-          '8',
-          '8.5',
-          '9',
-          '9.5',
-          '10',
-          '10.5',
-          '11',
-          '11.5',
-          '12',
-          '12.5',
-          '13',
-        ]),
-        stock: Math.floor(Math.random() * 10),
-      });
-    }
-
-    const shoes = await Shoe.find({});
-    const stocks = await Stock.find({});
-    let i = 0;
-    for (const shoe of shoes) {
-      shoe.stock = stocks[i]._id;
-      await shoe.save();
-      i++;
     }
 
     console.log('DB seeded');

@@ -6,7 +6,7 @@ const typeDefs = gql`
     model: String
     colour: String
     image: String
-    stock: Stock
+    stock: [Stock]
     gender: String
     price: Int
     featured: Boolean
