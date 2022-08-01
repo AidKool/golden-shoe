@@ -20,14 +20,25 @@ import { DrawerComponent } from '../../components';
 import { customTheme } from '../../utils/theme';
 import menuLinks from '../../utils/menuLinks';
 import { GET_NUMBER_PURCHASES } from '../../utils/queries';
+import { usePurchaseContext } from '../../context/PurchaseContext';
 
 function Navbar() {
+  const { valid, setValid } = usePurchaseContext();
+
   const theme = useTheme(customTheme);
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { data: numPurchases, loading: loadingNumPurchases } =
     useQuery(GET_NUMBER_PURCHASES);
 
   const purchases = numPurchases?.getNumberPurchases;
+
+  useEffect(() => {
+    if (numPurchases) {
+      if (purchases === 0) {
+        setValid(false);
+      }
+    }
+  }, [numPurchases, purchases, setValid]);
 
   return (
     <AppBar position="fixed" sx={{ bgcolor: 'dark.main' }}>

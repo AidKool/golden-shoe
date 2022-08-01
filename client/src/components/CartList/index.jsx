@@ -45,7 +45,11 @@ function CartList({ purchases }) {
 
   return (
     <Box>
-      {purchases.length > 0 && (
+      {purchases.length === 0 ? (
+        <Box>
+          <Typography textTransform="uppercase">empty cart</Typography>
+        </Box>
+      ) : (
         <TableContainer>
           <Table>
             <TableHead>
