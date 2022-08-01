@@ -106,6 +106,17 @@ const resolvers = {
         throw new Error(error.message);
       }
     },
+    updatePurchase: async (_, { _id, size, units }) => {
+      try {
+        const purchase = await Purchase.findOneAndUpdate(
+          { item: _id, size },
+          { units: units }
+        );
+        return purchase ? true : false;
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    },
   },
 };
 

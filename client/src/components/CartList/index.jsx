@@ -1,4 +1,8 @@
+import React, { useEffect, useState } from 'react';
+import { useMutation } from '@apollo/client';
 import {
+  Button,
+  ButtonGroup,
   Table,
   TableBody,
   TableCell,
@@ -6,16 +10,20 @@ import {
   TableHead,
   TableRow,
   Typography,
+  Box,
+  IconButton,
+  Stack,
 } from '@mui/material';
-import { Box } from '@mui/system';
-import React, { useEffect } from 'react';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+import UpdateIcon from '@mui/icons-material/Update';
 import { usePurchaseContext } from '../../context/PurchaseContext';
+import { UPDATE_PURCHASE } from '../../utils/mutations';
 
 function CartList({ purchases }) {
   const { valid, setValid } = usePurchaseContext();
-  if (purchases.length > 0) {
-    console.log(purchases);
-  }
+  const [cart, setCart] = useState({});
+  const [updatePurchase] = useMutation(UPDATE_PURCHASE);
 
   useEffect(() => {
     purchases.forEach((purchase) => {
@@ -23,6 +31,14 @@ function CartList({ purchases }) {
         setValid(false);
       }
     });
+    const tempUnits = {};
+    purchases.forEach((purchase) => {
+      const { size, units } = purchase;
+      const { _id } = purchase.item;
+      const key = JSON.stringify({ _id, size });
+      tempUnits[key] = units;
+    });
+    setCart(tempUnits);
   }, [purchases, setValid]);
 
   return (
@@ -57,7 +73,8 @@ function CartList({ purchases }) {
             <TableBody>
               {purchases.map((item, index) => {
                 const { model, price, _id, stock } = item.item;
-                const { size, units } = item;
+                const { size } = item;
+                let { units } = item;
                 return (
                   <TableRow key={_id + index}>
                     <TableCell>
@@ -71,12 +88,58 @@ function CartList({ purchases }) {
                         }}
                       >
                         {model}
+                        {
+                          <IconButton
+                            onClick={async () => {
+                              const newUnits =
+                                cart[JSON.stringify({ _id, size })];
+                              const { data } = await updatePurchase({
+                                variables: {
+                                  id: _id,
+                                  size,
+                                  units: newUnits,
+                                },
+                              });
+                              if (data) {
+                                window.location.reload(false);
+                              } else {
+                                alert(
+                                  'There was an error updating the purchase'
+                                );
+                              }
+                            }}
+                          >
+                            <UpdateIcon />
+                          </IconButton>
+                        }
                       </Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography textTransform="capitalize">
-                        {units}
-                      </Typography>
+                      <Stack direction="row" display="flex" alignItems="center">
+                        <IconButton
+                          onClick={async () => {
+                            const key = JSON.stringify({ _id, size });
+                            setCart({
+                              ...cart,
+                              [key]: cart[key] - 1,
+                            });
+                          }}
+                        >
+                          <RemoveIcon />
+                        </IconButton>
+                        <Box>{cart[JSON.stringify({ _id, size })]}</Box>
+                        <IconButton
+                          onClick={async () => {
+                            const key = JSON.stringify({ _id, size });
+                            setCart({
+                              ...cart,
+                              [key]: cart[key] + 1,
+                            });
+                          }}
+                        >
+                          <AddIcon />
+                        </IconButton>
+                      </Stack>
                     </TableCell>
                     <TableCell>
                       <Typography textTransform="capitalize">{size}</Typography>
