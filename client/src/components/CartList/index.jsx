@@ -72,9 +72,11 @@ function CartList({ purchases }) {
             </TableHead>
             <TableBody>
               {purchases.map((item, index) => {
-                const { model, price, _id, stock } = item.item;
+                const { model, price, _id } = item.item;
                 const { size } = item;
                 let { units } = item;
+                let { stock } = item.item;
+                stock = stock.filter((item) => item.size === size);
                 return (
                   <TableRow key={_id + index}>
                     <TableCell>
@@ -112,6 +114,9 @@ function CartList({ purchases }) {
                             <UpdateIcon />
                           </IconButton>
                         }
+                      </Typography>
+                      <Typography sx={{ fontSize: '0.75rem' }}>
+                        {stock[0].stock} units left
                       </Typography>
                     </TableCell>
                     <TableCell>

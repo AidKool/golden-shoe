@@ -69,9 +69,6 @@ const resolvers = {
         for await (const purchase of purchases) {
           const { item, size, units } = purchase;
           const shoes = await Shoe.findById(item);
-          shoes.stock = shoes.stock.filter((item) => {
-            return item.size === purchase.size;
-          });
           purchaseResponse.push({ item: shoes, size, units });
         }
         return purchaseResponse;
