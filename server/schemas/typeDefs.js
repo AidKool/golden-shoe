@@ -45,6 +45,7 @@ const typeDefs = gql`
   type Mutation {
     addToCart(_id: ID!, size: String!): Boolean
     updatePurchase(_id: ID!, size: String!, units: Int!): Boolean
+    checkout: Boolean
   }
 `;
 

@@ -11,3 +11,9 @@ export const UPDATE_PURCHASE = gql`
     updatePurchase(_id: $id, units: $units, size: $size)
   }
 `;
+
+export const CHECKOUT = gql`
+  mutation Checkout {
+    checkout
+  }
+`;

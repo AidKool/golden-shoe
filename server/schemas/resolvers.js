@@ -119,6 +119,26 @@ const resolvers = {
         throw new Error(error.message);
       }
     },
+    checkout: async () => {
+      try {
+        const purchases = await Purchase.find();
+        for await (const purchase of purchases) {
+          const { item, size, units } = purchase;
+          const { _id } = item;
+          const shoes = await Shoe.findById(_id);
+          shoes.stock.forEach((pair) => {
+            if (pair.size === size) {
+              pair.stock -= units;
+            }
+          });
+          shoes.save();
+        }
+        await Purchase.deleteMany();
+        return purchases ? true : false;
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    },
   },
 };
 
