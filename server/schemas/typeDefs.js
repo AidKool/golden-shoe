@@ -22,11 +22,13 @@ const typeDefs = gql`
   type Purchase {
     item: String
     size: String
+    units: Int
   }
 
   type PurchaseResponse {
     item: Shoe
     size: String
+    units: Int
   }
 
   type Query {

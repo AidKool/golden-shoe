@@ -90,8 +90,13 @@ export const GET_ALL_PURCHASES = gql`
         image
         gender
         price
+        stock {
+          size
+          stock
+        }
       }
       size
+      units
     }
   }
 `;

@@ -1,7 +1,4 @@
 import {
-  Grid,
-  List,
-  ListItem,
   Table,
   TableBody,
   TableCell,
@@ -16,8 +13,6 @@ import React from 'react';
 function CartList({ purchases }) {
   if (purchases.length > 0) {
     console.log(purchases);
-  } else {
-    console.log('no shoes');
   }
   return (
     <Box>
@@ -33,7 +28,7 @@ function CartList({ purchases }) {
                 </TableCell>
                 <TableCell>
                   <Typography textTransform="capitalize" fontWeight="bold">
-                    gender
+                    units
                   </Typography>
                 </TableCell>
                 <TableCell>
@@ -42,18 +37,18 @@ function CartList({ purchases }) {
                   </Typography>
                 </TableCell>
                 <TableCell>
-                  <Typography textTransform="capitalize" fontWeight="bold">
-                    price
+                  <Typography textTransform="uppercase" fontWeight="bold">
+                    ppu
                   </Typography>
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {purchases.map((item) => {
-                const { gender, model, price, _id } = item.item;
-                const { size } = item;
+              {purchases.map((item, index) => {
+                const { model, price, _id } = item.item;
+                const { size, units } = item;
                 return (
-                  <TableRow key={_id}>
+                  <TableRow key={_id + index}>
                     <TableCell>
                       <Typography textTransform="capitalize">
                         {model}
@@ -61,7 +56,7 @@ function CartList({ purchases }) {
                     </TableCell>
                     <TableCell>
                       <Typography textTransform="capitalize">
-                        {gender === 'F' ? 'women' : 'men'}
+                        {units}
                       </Typography>
                     </TableCell>
                     <TableCell>

@@ -67,9 +67,9 @@ const resolvers = {
         const purchaseResponse = [];
 
         for await (const purchase of purchases) {
-          const { item, size } = purchase;
+          const { item, size, units } = purchase;
           const shoes = await Shoe.findById(item);
-          purchaseResponse.push({ item: shoes, size });
+          purchaseResponse.push({ item: shoes, size, units });
         }
         return purchaseResponse;
       } catch (error) {
@@ -78,7 +78,11 @@ const resolvers = {
     },
     getNumberPurchases: async () => {
       try {
-        return Purchase.count();
+        const purchases = await Purchase.find();
+        const total = purchases.reduce((acc, current) => {
+          return acc + current.units;
+        }, 0);
+        return total;
       } catch (error) {
         throw new Error(error.message);
       }
@@ -87,8 +91,14 @@ const resolvers = {
   Mutation: {
     addToCart: async (_, { _id, size }) => {
       try {
-        const purchase = await Purchase.create({ item: _id, size });
-        return purchase ? true : false;
+        const purchase = await Purchase.findOne({ item: _id, size: size });
+        if (purchase) {
+          purchase.units += 1;
+          purchase.save();
+        } else {
+          Purchase.create({ item: _id, size });
+        }
+        return true;
       } catch (error) {
         throw new Error(error.message);
       }

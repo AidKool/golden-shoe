@@ -7,7 +7,7 @@ function Checkout({ purchases }) {
 
   useEffect(() => {
     const totalTemp = purchases.reduce((acc, current) => {
-      return acc + current.item.price;
+      return acc + current.item.price * current.units;
     }, 0);
     setTotal(totalTemp);
   }, [purchases]);

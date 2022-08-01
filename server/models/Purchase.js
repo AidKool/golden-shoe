@@ -10,6 +10,11 @@ const purchaseSchema = new Schema({
     type: String,
     required: true,
   },
+  units: {
+    type: Number,
+    required: true,
+    default: 1,
+  },
 });
 
 const Purchase = mongoose.model('Purchase', purchaseSchema);

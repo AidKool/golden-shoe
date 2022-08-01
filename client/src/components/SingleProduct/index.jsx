@@ -16,18 +16,19 @@ import {
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import { useEffect } from 'react';
 import { GET_SHOES_BY_ID } from '../../utils/queries';
+import { ADD_TO_CART } from '../../utils/mutations';
 
 function SingleProduct({ open, handleClose, id }) {
   const initialState = {
     size: 'size',
-    colour: 'colour',
   };
   const [formState, setFormState] = useState(initialState);
   const [shoes, setShoes] = useState({});
   const [getShoesById, { loading, data }] = useLazyQuery(GET_SHOES_BY_ID);
+  const [addToCart] = useMutation(ADD_TO_CART);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -171,7 +172,33 @@ function SingleProduct({ open, handleClose, id }) {
               variant="contained"
               disableElevation
               endIcon={<AddShoppingCartIcon />}
-              sx={{ bgcolor: 'warning.light' }}
+              sx={{
+                bgcolor: 'warning.light',
+                '&:hover': {
+                  bgcolor: 'warning.light',
+                },
+              }}
+              onClick={async () => {
+                try {
+                  if (formState.size === 'size') {
+                    alert('Choose a valid size');
+                  } else {
+                    const { data } = await addToCart({
+                      variables: { id: id, size: formState.size },
+                    });
+                    if (data) {
+                      alert('Item added to cart');
+                      setTimeout(() => {
+                        window.location.reload(false);
+                      }, 1000);
+                    } else {
+                      alert('There was an error');
+                    }
+                  }
+                } catch (error) {
+                  throw new Error(error.message);
+                }
+              }}
             >
               <Typography textTransform="capitalize">add to cart</Typography>
             </Button>
