@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Grid, Typography } from '@mui/material';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import { usePurchaseContext } from '../../context/PurchaseContext';
 
 function Checkout({ purchases }) {
   const [total, setTotal] = useState(0);
+  const { valid, setValid } = usePurchaseContext();
 
   useEffect(() => {
     const totalTemp = purchases.reduce((acc, current) => {
@@ -39,6 +41,7 @@ function Checkout({ purchases }) {
       <Button
         variant="contained"
         disableElevation
+        disabled={!valid}
         endIcon={<ShoppingCartCheckoutIcon />}
         sx={{ bgcolor: 'warning.light' }}
       >

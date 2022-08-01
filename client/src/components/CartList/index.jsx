@@ -8,12 +8,23 @@ import {
   Typography,
 } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { usePurchaseContext } from '../../context/PurchaseContext';
 
 function CartList({ purchases }) {
+  const { valid, setValid } = usePurchaseContext();
   if (purchases.length > 0) {
     console.log(purchases);
   }
+
+  useEffect(() => {
+    purchases.forEach((purchase) => {
+      if (purchase.item.stock[0].stock < purchase.units) {
+        setValid(false);
+      }
+    });
+  }, [purchases, setValid]);
+
   return (
     <Box>
       {purchases.length > 0 && (
@@ -45,12 +56,20 @@ function CartList({ purchases }) {
             </TableHead>
             <TableBody>
               {purchases.map((item, index) => {
-                const { model, price, _id } = item.item;
+                const { model, price, _id, stock } = item.item;
                 const { size, units } = item;
                 return (
                   <TableRow key={_id + index}>
                     <TableCell>
-                      <Typography textTransform="capitalize">
+                      <Typography
+                        textTransform="capitalize"
+                        sx={{
+                          ...(units > stock[0].stock && {
+                            color: 'error.light',
+                            fontWeight: 'bold',
+                          }),
+                        }}
+                      >
                         {model}
                       </Typography>
                     </TableCell>

@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { Cart, Home, Products } from './pages';
+import PurchaseProvider from './context/PurchaseContext';
 
 const customTheme = createTheme({
   palette: {
@@ -32,14 +33,16 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={customTheme}>
-        <CssBaseline />
-        <Router>
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="/products/:type" element={<Products />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
-        </Router>
+        <PurchaseProvider>
+          <CssBaseline />
+          <Router>
+            <Routes>
+              <Route index element={<Home />} />
+              <Route path="/products/:type" element={<Products />} />
+              <Route path="/cart" element={<Cart />} />
+            </Routes>
+          </Router>
+        </PurchaseProvider>
       </ThemeProvider>
     </ApolloProvider>
   );
