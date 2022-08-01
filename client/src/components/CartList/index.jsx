@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import {
-  Button,
-  ButtonGroup,
   Table,
   TableBody,
   TableCell,
@@ -27,9 +25,13 @@ function CartList({ purchases }) {
 
   useEffect(() => {
     purchases.forEach((purchase) => {
-      if (purchase.item.stock[0].stock < purchase.units) {
-        setValid(false);
-      }
+      purchase.item.stock.forEach((obj) => {
+        if (obj.size === purchase.size) {
+          if (obj.stock < purchase.units) {
+            setValid(false);
+          }
+        }
+      });
     });
     const tempUnits = {};
     purchases.forEach((purchase) => {
