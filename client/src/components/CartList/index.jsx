@@ -119,9 +119,11 @@ function CartList({ purchases }) {
                         <IconButton
                           onClick={async () => {
                             const key = JSON.stringify({ _id, size });
+                            const newUnits =
+                              cart[key] - 1 >= 0 ? cart[key] - 1 : 0;
                             setCart({
                               ...cart,
-                              [key]: cart[key] - 1,
+                              [key]: newUnits,
                             });
                           }}
                         >
@@ -131,9 +133,11 @@ function CartList({ purchases }) {
                         <IconButton
                           onClick={async () => {
                             const key = JSON.stringify({ _id, size });
+                            const newUnits =
+                              cart[key] + 1 >= 0 ? cart[key] + 1 : 0;
                             setCart({
                               ...cart,
-                              [key]: cart[key] + 1,
+                              [key]: newUnits,
                             });
                           }}
                         >

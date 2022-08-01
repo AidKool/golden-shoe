@@ -108,10 +108,15 @@ const resolvers = {
     },
     updatePurchase: async (_, { _id, size, units }) => {
       try {
-        const purchase = await Purchase.findOneAndUpdate(
-          { item: _id, size },
-          { units: units }
-        );
+        let purchase;
+        if (units <= 0) {
+          purchase = await Purchase.findOneAndDelete({ item: _id, size });
+        } else {
+          purchase = await Purchase.findOneAndUpdate(
+            { item: _id, size },
+            { units: units }
+          );
+        }
         return purchase ? true : false;
       } catch (error) {
         throw new Error(error.message);
