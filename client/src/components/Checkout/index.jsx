@@ -7,7 +7,7 @@ import { CHECKOUT } from '../../utils/mutations';
 
 function Checkout({ purchases }) {
   const [total, setTotal] = useState(0);
-  const { valid, setValid } = usePurchaseContext();
+  const { valid } = usePurchaseContext();
   const [checkout] = useMutation(CHECKOUT);
 
   useEffect(() => {

@@ -19,7 +19,7 @@ import { usePurchaseContext } from '../../context/PurchaseContext';
 import { UPDATE_PURCHASE } from '../../utils/mutations';
 
 function CartList({ purchases }) {
-  const { valid, setValid } = usePurchaseContext();
+  const { setValid } = usePurchaseContext();
   const [cart, setCart] = useState({});
   const [updatePurchase] = useMutation(UPDATE_PURCHASE);
 

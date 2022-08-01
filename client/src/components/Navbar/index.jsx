@@ -23,7 +23,7 @@ import { GET_NUMBER_PURCHASES } from '../../utils/queries';
 import { usePurchaseContext } from '../../context/PurchaseContext';
 
 function Navbar() {
-  const { valid, setValid } = usePurchaseContext();
+  const { setValid } = usePurchaseContext();
 
   const theme = useTheme(customTheme);
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
